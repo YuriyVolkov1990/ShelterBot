@@ -22,8 +22,6 @@ import java.util.regex.Pattern;
 public class ShelterBotUpdatesListener implements UpdatesListener {
 
     private Logger logger = LoggerFactory.getLogger(ShelterBotUpdatesListener.class);
-    private static Pattern PATTERN = Pattern.compile("(\\d{2}\\.\\d{2}\\.\\d{4} \\d{2}:\\d{2})\\s+(.*)");
-    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
     @Autowired
     private TelegramBot telegramBot;
 //    @Autowired
@@ -39,7 +37,6 @@ public class ShelterBotUpdatesListener implements UpdatesListener {
         updates.forEach(update -> {
             String text = update.message().text();
             Long chatId = update.message().chat().id();
-            Matcher matcher = PATTERN.matcher(text);
             if ("/start".equalsIgnoreCase(text)) {
                 SendMessage sendMessage = new SendMessage(chatId, "HI");
                 telegramBot.execute(sendMessage);

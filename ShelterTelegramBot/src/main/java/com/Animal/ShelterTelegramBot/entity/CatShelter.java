@@ -11,29 +11,18 @@ import javax.persistence.*;
 @Getter
 @Setter
 @AllArgsConstructor
-public class CatShelter implements Shelter {
+public class CatShelter {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "name")
-    private String name;
-    @Override
-    public String getInfo() {
-        return null;
-    }
+    @Column(name = "info")
+    private String info;
+    @Column(name = "guardData")
+    private String guardData;
+    @Column(name = "recommendation")
+    private String recommendation;
+    @Column(name = "contact")
+    private String contact;
 
-    @Override
-    public String getGuardData() {
-        return null;
-    }
 
-    @Override
-    public String getRecommendation() {
-        return null;
-    }
-
-    @Override
-    public String getContact() {
-        return null;
-    }
 }
