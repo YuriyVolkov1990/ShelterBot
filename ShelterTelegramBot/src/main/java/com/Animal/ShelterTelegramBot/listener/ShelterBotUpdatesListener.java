@@ -1,6 +1,8 @@
 package com.Animal.ShelterTelegramBot.listener;
 
+import com.Animal.ShelterTelegramBot.entity.CatShelter;
 import com.Animal.ShelterTelegramBot.keyboard.ReplyKeyboardMaker;
+import com.Animal.ShelterTelegramBot.service.ShelterService;
 import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.UpdatesListener;
 import com.pengrad.telegrambot.model.Update;
@@ -19,11 +21,11 @@ public class ShelterBotUpdatesListener implements UpdatesListener {
 
     private Logger logger = LoggerFactory.getLogger(ShelterBotUpdatesListener.class);
     @Autowired
-    ReplyKeyboardMaker replyKeyboardMaker;
+    private ReplyKeyboardMaker replyKeyboardMaker;
     @Autowired
     private TelegramBot telegramBot;
-//    @Autowired
-//    private NotificationTaskRepository repository;
+    @Autowired
+    private ShelterService shelterService;
 
     @PostConstruct
     public void init() {
@@ -55,10 +57,16 @@ public class ShelterBotUpdatesListener implements UpdatesListener {
         String text = update.message().text();
         Long chatId = update.message().chat().id();
         if ("Выбрать приют для кошек".equalsIgnoreCase(text)) {
-            SendMessage catMessage = new SendMessage(chatId, "Вы выбрали кошачий приют, вы можете: /info");
+            SendMessage catMessage = new SendMessage(chatId, "Вы выбрали кошачий приют");
             catMessage.replyMarkup(replyKeyboardMaker.getCatMenuKeyboard());
             telegramBot.execute(catMessage);
+            SendMessage infoMessage = new SendMessage(chatId, shelterService.getInfo(1L));
+            telegramBot.execute(infoMessage);
         }
+//        if ("Инфо про кошачий приют".equalsIgnoreCase(text)) {
+//            SendMessage infoMessage = new SendMessage(chatId, shelterService.getInfo(1L));
+//            telegramBot.execute(infoMessage);
+//        }
     });
     }
     private void dogMenu (List<Update> updates) {
@@ -66,9 +74,9 @@ public class ShelterBotUpdatesListener implements UpdatesListener {
             String text = update.message().text();
             Long chatId = update.message().chat().id();
             if ("Выбрать приют для кошек".equalsIgnoreCase(text)) {
-                SendMessage sendMessage1 = new SendMessage(chatId, "Вы выбрали собачий приют, вы можете: /info");
-                sendMessage1.replyMarkup(replyKeyboardMaker.getDogMenuKeyboard());
-                telegramBot.execute(sendMessage1);
+                SendMessage dogMessage = new SendMessage(chatId, "Вы выбрали собачий приют");
+                dogMessage.replyMarkup(replyKeyboardMaker.getDogMenuKeyboard());
+                telegramBot.execute(dogMessage);
             }
         });
     }

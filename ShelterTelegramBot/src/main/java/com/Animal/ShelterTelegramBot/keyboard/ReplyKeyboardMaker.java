@@ -21,8 +21,10 @@ public class ReplyKeyboardMaker {
     }
     public ReplyKeyboardMarkup getCatMenuKeyboard() {
         KeyboardButton c1 = new KeyboardButton(ButtonNameEnum.INFO_CAT.getButtonName());
-        KeyboardButton[] keyboard = new KeyboardButton[1];
-        keyboard[0] = c1;
+        KeyboardButton c2 = new KeyboardButton(ButtonNameEnum.GUARD_CAT.getButtonName());
+        KeyboardButton c3 = new KeyboardButton(ButtonNameEnum.RECOMMEND_CAT.getButtonName());
+        KeyboardButton c4 = new KeyboardButton(ButtonNameEnum.CONTACT_CAT.getButtonName());
+        KeyboardButton[] keyboard = new KeyboardButton[]{c1,c2,c3,c4};
         ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup(keyboard);
         replyKeyboardMarkup.selective(true);
         replyKeyboardMarkup.resizeKeyboard(true);
@@ -30,9 +32,11 @@ public class ReplyKeyboardMaker {
         return replyKeyboardMarkup;
     }
     public ReplyKeyboardMarkup getDogMenuKeyboard() {
-        KeyboardButton d1 = new KeyboardButton(ButtonNameEnum.INFO_CAT.getButtonName());
-        KeyboardButton[] keyboard = new KeyboardButton[1];
-        keyboard[0] = d1;
+        KeyboardButton d1 = new KeyboardButton(ButtonNameEnum.INFO_DOG.getButtonName());
+        KeyboardButton d2 = new KeyboardButton(ButtonNameEnum.GUARD_DOG.getButtonName());
+        KeyboardButton d3 = new KeyboardButton(ButtonNameEnum.RECOMMEND_DOG.getButtonName());
+        KeyboardButton d4 = new KeyboardButton(ButtonNameEnum.CONTACT_DOG.getButtonName());
+        KeyboardButton[] keyboard = new KeyboardButton[]{d1,d2,d3,d4};
         ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup(keyboard);
         replyKeyboardMarkup.selective(true);
         replyKeyboardMarkup.resizeKeyboard(true);

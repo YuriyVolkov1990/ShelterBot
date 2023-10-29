@@ -2,6 +2,7 @@ package com.Animal.ShelterTelegramBot.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -11,7 +12,8 @@ import javax.persistence.*;
 @Getter
 @Setter
 @AllArgsConstructor
-public class DogShelter implements Shelter{
+@NoArgsConstructor
+public class DogShelter {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

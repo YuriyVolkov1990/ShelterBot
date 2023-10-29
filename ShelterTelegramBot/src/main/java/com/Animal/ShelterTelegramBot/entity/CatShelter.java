@@ -1,8 +1,7 @@
 package com.Animal.ShelterTelegramBot.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+import net.bytebuddy.build.HashCodeAndEqualsPlugin;
 
 import javax.persistence.*;
 
@@ -11,6 +10,8 @@ import javax.persistence.*;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
+@ToString
 public class CatShelter {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,6 +24,4 @@ public class CatShelter {
     private String recommendation;
     @Column(name = "contact")
     private String contact;
-
-
 }
