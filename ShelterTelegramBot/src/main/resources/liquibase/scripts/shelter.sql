@@ -1,6 +1,6 @@
 -- liquibase formatted sql
 
---chageset volkov:1
+--changeset volkov:1
 create table cat_shelter(
     id bigserial primary key,
     info text not null,
